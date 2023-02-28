@@ -5,6 +5,8 @@ RSpec.describe Merchant, type: :model do
     it { should have_many :items }
     it { should have_many :invoices }
     it { should have_many(:invoice_items).through(:items) }
+    it { should have_many(:customers).through(:invoices) }
+    it { should have_many(:transactions).through(:invoices) }
   end
 
   let!(:this_gai_ovah_hea) { Customer.create!(first_name: "Dis", last_name: "Gai") }
